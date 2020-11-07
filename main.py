@@ -14,8 +14,9 @@ def run_game():
     display.set_caption('Battle ship')
 
     while True:
-        gf.check_events()
+        gf.check_events(ship)
         gf.update_screen(game_settings, s, ship)
+        ship.update()
 
 
 if __name__ == '__main__':
