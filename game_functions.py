@@ -2,20 +2,28 @@ import sys
 from pygame import *
 
 
+def check_keydown_events(event, ship):
+    if event.key == K_RIGHT:
+        ship.moving_right = True
+    elif event.key == K_LEFT:
+        ship.moving_left = True
+
+
+def check_keyup_events(event, ship):
+    if event.key == K_RIGHT:
+        ship.moving_right = False
+    elif event.key == K_LEFT:
+        ship.moving_left = False
+
+
 def check_events(ship):
     for i in event.get():
         if i.type == QUIT:
             sys.exit()
         elif i.type == KEYDOWN:
-            if i.key == K_RIGHT:
-                ship.moving_right = True
-            elif i.key == K_LEFT:
-                ship.moving_left = True
+            check_keydown_events(i, ship)
         elif i.type == KEYUP:
-            if i.key == K_RIGHT:
-                ship.moving_right = False
-            elif i.key == K_LEFT:
-                ship.moving_left = False
+            check_keyup_events(i, ship)
 
 
 def update_screen(settings, screen, ship):
