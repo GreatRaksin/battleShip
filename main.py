@@ -12,14 +12,10 @@ def run_game():
     ship = Ship(s)
 
     display.set_caption('Battle ship')
-    bg = game_settings.bg_color
 
     while True:
         gf.check_events()
-        s.fill(bg)
-        ship.blitme()
-
-        display.flip()
+        gf.update_screen(game_settings, s, ship)
 
 
 if __name__ == '__main__':
